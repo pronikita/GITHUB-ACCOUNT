@@ -1,8 +1,9 @@
 #include <locale.h>
 #include <stdio.h>
+#include <math.h>
 #include <time.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> // Для использования memcpy()
 
 void menu() {
     printf("|1.Рандомный массив       |\n");
@@ -93,6 +94,15 @@ void shellSort(int arr[], int size, int* iterationCount) {
     }
 }
 
+int isSorted(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int* globalArray = NULL;
 int* originalArray = NULL;
 int globalArraySize = 0;
@@ -116,7 +126,7 @@ int main() {
             globalArray = (int*)malloc(globalArraySize * sizeof(int));
             originalArray = (int*)malloc(globalArraySize * sizeof(int));
             for (int i = 0; i < globalArraySize; i++) {
-                globalArray[i] = rand();
+                globalArray[i] = rand() % 101;
             }
             memcpy(originalArray, globalArray, globalArraySize * sizeof(int));
             printf("\n");
@@ -173,6 +183,12 @@ int main() {
                 }
                 printf("\nКоличество итераций: %d\n", iterations);
                 printf("Время выполнения: %.6f секунд\n\n", time_spent);
+                if (isSorted(globalArray, globalArraySize) == 1) {
+                    printf("Массив успешно отсортирован.\n\n");
+                }
+                else {
+                    printf("Ошибка: массив не отсортирован.\n\n");
+                }
                 restoreArray();
             }
             else {
@@ -195,6 +211,12 @@ int main() {
                 }
                 printf("\nКоличество итераций: %d\n", iterations);
                 printf("Время выполнения: %.6f секунд\n\n", time_spent);
+                if (isSorted(globalArray, globalArraySize) == 1) {
+                    printf("Массив успешно отсортирован.\n\n");
+                }
+                else {
+                    printf("Ошибка: массив не отсортирован.\n\n");
+                }
                 restoreArray();
             }
             else {
@@ -217,6 +239,12 @@ int main() {
                 }
                 printf("\nКоличество итераций: %d\n", iterations);
                 printf("Время выполнения: %.6f секунд\n\n", time_spent);
+                if (isSorted(globalArray, globalArraySize) == 1) {
+                    printf("Массив успешно отсортирован.\n\n");
+                }
+                else {
+                    printf("Ошибка: массив не отсортирован.\n\n");
+                }
                 restoreArray();
             }
             else {
@@ -239,6 +267,12 @@ int main() {
                 }
                 printf("\nКоличество итераций: %d\n", iterations);
                 printf("Время выполнения: %.6f секунд\n\n", time_spent);
+                if (isSorted(globalArray, globalArraySize) == 1) {
+                    printf("Массив успешно отсортирован.\n\n");
+                }
+                else {
+                    printf("Ошибка: массив не отсортирован.\n\n");
+                }
                 restoreArray();
             }
             else {
